@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>طلب باور ماستر – واتساب</title>
+<style>
+body { font-family: monospace, sans-serif; background:#f3f3f3; padding:30px; }
+.box { background:#fff; padding:20px; margin-bottom:20px; border-radius:10px; box-shadow:0 3px 8px rgba(0,0,0,0.1);}
+
+select, input[type="text"], input[type="number"] {
+  width:100%;
+  padding:15px;
+  font-size:18px;
+  border-radius:8px;
+  border:1px solid #aaa;
+  margin-top:10px;
+}
+
+table { width:100%; border-collapse:collapse; margin-top:10px; }
+th, td { border:1px solid #ddd; padding:10px; text-align:center; }
+th { background:#007bff; color:#fff; }
+
+button { padding:12px 18px; border:none; background:#007bff; color:#fff; border-radius:6px; cursor:pointer; font-size:17px; margin-top:10px;}
+button:hover { background:#0056b3; }
+
+input[type='number'] { width: 60px; text-align:center; }
+
+#orderTable td:nth-child(1), #orderTable th:nth-child(1) { width: 70%; }
+#orderTable td:nth-child(2), #orderTable th:nth-child(2) { width: 20%; }
+#orderTable td:nth-child(3), #orderTable th:nth-child(3) { width: 10%; }
+</style>
+</head>
+<body>
+
+<div class="box">
+<h2>بيانات العميل</h2>
+<label>اسم العميل:</label>
+<input type="text" id="clientName" placeholder="اكتب اسم العميل">
+<br><br>
+<label>اسم الشركة:</label>
+<input type="text" id="companyName" placeholder="اكتب اسم الشركة">
+</div>
+
+<div class="box">
+<h2>اختيار المنتج</h2>
+<label>ابحث أو الصق الكود هنا:</label>
+<input type="text" id="productSearch" placeholder="اكتب أو الصق الكود هنا">
+
+<label>اختر المنتج:</label>
+<select id="productList">
+<option value="" disabled selected>اختر المنتج</option>
+
+<option value="LC1D09B7">LC1D09B7 — كونتاكتور: 9 أمبير, 4 ك وات , 24 فولت AC</option>
+<option value="LC1D09F7">LC1D09F7 — كونتاكتور: 9 أمبير, 4 ك وات , 110 فولت AC</option>
+<option value="LC1D09M7">LC1D09M7 — كونتاكتور: 9 أمبير, 4 ك وات , 220 فولت AC</option>
+<option value="LC1D09Q7">LC1D09Q7 — كونتاكتور: 9 أمبير, 4 ك وات , 380 فولت AC</option>
+
+<option value="LC1D12B7">LC1D12B7 — كونتاكتور: 12 أمبير, 5.5 ك وات , 24 فولت AC</option>
+<option value="LC1D12F7">LC1D12F7 — كونتاكتور: 12 أمبير, 5.5 ك وات , 110 فولت AC</option>
+<option value="LC1D12M7">LC1D12M7 — كونتاكتور: 12 أمبير, 5.5 ك وات , 220 فولت AC</option>
+<option value="LC1D12Q7">LC1D12Q7 — كونتاكتور: 12 أمبير, 5.5 ك وات , 380 فولت AC</option>
+
+<option value="LC1D18B7">LC1D18B7 — كونتاكتور: 18 أمبير, 7.5 ك وات , 24 فولت AC</option>
+<option value="LC1D18F7">LC1D18F7 — كونتاكتور: 18 أمبير, 7.5 ك وات , 110 فولت AC</option>
+<option value="LC1D18M7">LC1D18M7 — كونتاكتور: 18 أمبير, 7.5 ك وات , 220 فولت AC</option>
+<option value="LC1D18Q7">LC1D18Q7 — كونتاكتور: 18 أمبير, 7.5 ك وات , 380 فولت AC</option>
+
+<option value="LC1D25B7">LC1D25B7 — كونتاكتور: 25 أمبير, 11 ك وات , 24 فولت AC</option>
+<option value="LC1D25F7">LC1D25F7 — كونتاكتور: 25 أمبير, 11 ك وات , 110 فولت AC</option>
+<option value="LC1D25M7">LC1D25M7 — كونتاكتور: 25 أمبير, 11 ك وات , 220 فولت AC</option>
+<option value="LC1D25Q7">LC1D25Q7 — كونتاكتور: 25 أمبير, 11 ك وات , 380 فولت AC</option>
+</select>
+
+<button onclick="addProduct()">إضافة</button>
+</div>
+
+<div class="box">
+<h2>قائمة الطلبات</h2>
+<table id="orderTable">
+<thead>
+<tr>
+<th>المنتج</th>
+<th>الكمية</th>
+<th>حذف</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+
+<button id="sendBtn">طلب عرض سعر</button>
+</div>
+
+<script>
+const productList = document.getElementById("productList");
+const productSearch = document.getElementById("productSearch");
+
+// البحث عن المنتج عند الكتابة أو اللصق
+productSearch.addEventListener("input", function() {
+    const searchValue = this.value.trim().toLowerCase();
+    if(!searchValue) return;
+
+    let found = false;
+    for(let i=0; i<productList.options.length; i++){
+        const option = productList.options[i];
+        if(option.value.toLowerCase() === searchValue || option.text.toLowerCase().includes(searchValue)){
+            productList.selectedIndex = i;
+            found = true;
+            break;
+        }
+    }
+    if(!found) productList.selectedIndex = 0;
+});
+
+// إضافة المنتج للجدول بالكود + الوصف
+function addProduct() {
+  let select = productList;
+  if(select.value === "") {
+    alert("يرجى اختيار منتج قبل الإضافة!");
+    return;
+  }
+
+  let productText = select.options[select.selectedIndex].text; // الكود + الوصف
+  let table = document.getElementById("orderTable").querySelector("tbody");
+  let row = document.createElement("tr");
+
+  row.innerHTML = `
+    <td>${productText}</td>
+    <td><input type="number" value="1" min="1"></td>
+    <td><button onclick="this.parentElement.parentElement.remove();">✖</button></td>
+  `;
+
+  table.appendChild(row);
+  select.selectedIndex = 0;
+  productSearch.value = "";
+}
+
+// إرسال الطلب للواتساب (الكود فقط)
+document.getElementById("sendBtn").addEventListener("click", function() {
+  let client = document.getElementById("clientName").value.trim();
+  let company = document.getElementById("companyName").value.trim();
+  let rows = document.querySelectorAll("#orderTable tbody tr");
+
+  if(client === "" || company === "") {
+    alert("يرجى كتابة اسم العميل واسم الشركة قبل الإرسال!");
+    return;
+  }
+  if(rows.length === 0) {
+    alert("لم يتم إضافة أي منتجات للطلب!");
+    return;
+  }
+
+  let tableText = "┌───────────────────────────────┐\n";
+  tableText += "│          طلب عرض سعر           │\n";
+  tableText += "└───────────────────────────────┘\n\n";
+  tableText += `العميل: ${client}\n`;
+  tableText += `الشركة: ${company}\n\n`;
+  tableText += "┌───────────────────────────────┬────────┐\n";
+  tableText += "│ المنتج                        │ الكمية │\n";
+  tableText += "├───────────────────────────────┼────────┤\n";
+
+  rows.forEach(row => {
+    // الكود فقط قبل أي مسافة أو "—"
+    let fullText = row.children[0].innerText;
+    let code = fullText.split(' ')[0].trim(); // يأخذ الكود قبل أول فراغ
+    let qty = row.children[1].querySelector("input").value;
+    let codeCol = code.padEnd(30,' ').slice(0,30);
+    let qtyCol = qty.toString().padStart(6,' ');
+    tableText += `│ ${codeCol} │ ${qtyCol} │\n`;
+  });
+
+  tableText += "└───────────────────────────────┴────────┘\n";
+
+  const phone = "966564884782";
+  let msg = encodeURIComponent(tableText);
+  window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
+});
+</script>
+
+</body>
+</html>
