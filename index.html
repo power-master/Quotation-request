@@ -2,177 +2,650 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>طلب باور ماستر – واتساب</title>
-<style>
-body { font-family: monospace, sans-serif; background:#f3f3f3; padding:30px; }
-.box { background:#fff; padding:20px; margin-bottom:20px; border-radius:10px; box-shadow:0 3px 8px rgba(0,0,0,0.1);}
+<title>طلب عرض سعر – باور ماستر</title>
 
-select, input[type="text"], input[type="number"] {
+<style>
+body {
+  font-family: monospace, sans-serif;
+  background:#f3f3f3;
+  padding:30px;
+}
+
+.box {
+  background:#fff;
+  padding:20px;
+  margin-bottom:20px;
+  border-radius:10px;
+  box-shadow:0 3px 8px rgba(0,0,0,0.1);
+}
+
+input, select {
   width:100%;
-  padding:15px;
-  font-size:18px;
-  border-radius:8px;
+  padding:12px;
+  font-size:16px;
+  margin-top:8px;
+  border-radius:6px;
   border:1px solid #aaa;
+}
+
+button {
+  padding:10px 18px;
+  font-size:16px;
+  background:#007bff;
+  color:#fff;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
   margin-top:10px;
 }
 
-table { width:100%; border-collapse:collapse; margin-top:10px; }
-th, td { border:1px solid #ddd; padding:10px; text-align:center; }
-th { background:#007bff; color:#fff; }
-
-button { padding:12px 18px; border:none; background:#007bff; color:#fff; border-radius:6px; cursor:pointer; font-size:17px; margin-top:10px;}
 button:hover { background:#0056b3; }
 
-input[type='number'] { width: 60px; text-align:center; }
+table {
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
+}
 
-#orderTable td:nth-child(1), #orderTable th:nth-child(1) { width: 70%; }
-#orderTable td:nth-child(2), #orderTable th:nth-child(2) { width: 20%; }
-#orderTable td:nth-child(3), #orderTable th:nth-child(3) { width: 10%; }
+th, td {
+  border:1px solid #ddd;
+  padding:10px;
+  text-align:center;
+}
+
+th {
+  background:#007bff;
+  color:#fff;
+}
+
+input[type="number"] {
+  width:70px;
+  text-align:center;
+}
 </style>
 </head>
+
 <body>
 
 <div class="box">
-<h2>بيانات العميل</h2>
-<label>اسم العميل:</label>
-<input type="text" id="clientName" placeholder="اكتب اسم العميل">
-<br><br>
-<label>اسم الشركة:</label>
-<input type="text" id="companyName" placeholder="اكتب اسم الشركة">
+  <h3>بيانات العميل</h3>
+  <input id="clientName" placeholder="اسم العميل">
+  <input id="companyName" placeholder="اسم الشركة">
 </div>
 
 <div class="box">
-<h2>اختيار المنتج</h2>
-<label>ابحث أو الصق الكود هنا:</label>
-<input type="text" id="productSearch" placeholder="اكتب أو الصق الكود هنا">
+  <h3>اختيار المنتج</h3>
 
-<label>اختر المنتج:</label>
-<select id="productList">
-<option value="" disabled selected>اختر المنتج</option>
+  <input id="productSearch" placeholder="ابحث أو الصق الكود">
 
-<option value="LC1D09B7">LC1D09B7 — كونتاكتور: 9 أمبير, 4 ك وات , 24 فولت AC</option>
-<option value="LC1D09F7">LC1D09F7 — كونتاكتور: 9 أمبير, 4 ك وات , 110 فولت AC</option>
-<option value="LC1D09M7">LC1D09M7 — كونتاكتور: 9 أمبير, 4 ك وات , 220 فولت AC</option>
-<option value="LC1D09Q7">LC1D09Q7 — كونتاكتور: 9 أمبير, 4 ك وات , 380 فولت AC</option>
+  <select id="productList">
+    <option value="">اختر المنتج</option>
+   <option value="A9F74101">A9F74101—قاطع منتشر: أحادى, 1 أمبير, 50 ك أمبير</option>
+<option value="A9F74102">A9F74102—قاطع منتشر: أحادى, 2 أمبير, 50 ك أمبير</option>
+<option value="A9F74103">A9F74103—قاطع منتشر: أحادى, 3 أمبير, 50 ك أمبير</option>
+<option value="A9F74104">A9F74104—قاطع منتشر: أحادى, 4 أمبير, 50 ك أمبير</option>
+<option value="A9F77106">A9F77106—قاطع منتشر: أحادى, 6 أمبير, 10 ك أمبير</option>
+<option value="A9F77110">A9F77110—قاطع منتشر: أحادى, 10 أمبير, 10 ك أمبير</option>
+<option value="A9F77116">A9F77116—قاطع منتشر: أحادى, 16 أمبير, 10 ك أمبير</option>
+<option value="A9F77120">A9F77120—قاطع منتشر: أحادى, 20 أمبير, 10 ك أمبير</option>
+<option value="A9F77125">A9F77125—قاطع منتشر: أحادى, 25 أمبير, 10 ك أمبير</option>
+<option value="A9F77132">A9F77132—قاطع منتشر: أحادى, 32 أمبير, 10 ك أمبير</option>
+<option value="A9F77140">A9F77140—قاطع منتشر: أحادى, 40 أمبير, 10 ك أمبير</option>
+<option value="A9F77163">A9F77163—قاطع منتشر: أحادى, 63 أمبير, 10 ك أمبير</option>
+<option value="A9F74202">A9F74202—قاطع منتشر: ثنائى, 2 أمبير, 50 ك أمبير</option>
+<option value="A9F74204">A9F74204—قاطع منتشر: ثنائى, 4 أمبير, 50 ك أمبير</option>
+<option value="A9F77206">A9F77206—قاطع منتشر: ثنائى, 6 أمبير, 10 ك أمبير</option>
+<option value="A9F77210">A9F77210—قاطع منتشر: ثنائى, 10 أمبير, 10 ك أمبير</option>
+<option value="A9F77216">A9F77216—قاطع منتشر: ثنائى, 16 أمبير, 10 ك أمبير</option>
+<option value="A9F77220">A9F77220—قاطع منتشر: ثنائى, 20 أمبير, 10 ك أمبير</option>
+<option value="A9F77225">A9F77225—قاطع منتشر: ثنائى, 25 أمبير, 10 ك أمبير</option>
+<option value="A9F77232">A9F77232—قاطع منتشر: ثنائى, 32 أمبير, 10 ك أمبير</option>
+<option value="A9F77240">A9F77240—قاطع منتشر: ثنائى, 40 أمبير, 10 ك أمبير</option>
+<option value="A9F77263">A9F77263—قاطع منتشر: ثنائى, 63 أمبير, 10 ك أمبير</option>
+<option value="A9F77306">A9F77306—قاطع منتشر: ثلاثى, 6 أمبير, 10 ك أمبير</option>
+<option value="A9F77310">A9F77310—قاطع منتشر: ثلاثى, 10 أمبير, 10 ك أمبير</option>
+<option value="A9F77316">A9F77316—قاطع منتشر: ثلاثى, 16 أمبير, 10 ك أمبير</option>
+<option value="A9F77320">A9F77320—قاطع منتشر: ثلاثى, 20 أمبير, 10 ك أمبير</option>
+<option value="A9F77325">A9F77325—قاطع منتشر: ثلاثى, 25 أمبير, 10 ك أمبير</option>
+<option value="A9F77332">A9F77332—قاطع منتشر: ثلاثى, 32 أمبير, 10 ك أمبير</option>
+<option value="A9F77340">A9F77340—قاطع منتشر: ثلاثى, 40 أمبير, 10 ك أمبير</option>
+<option value="A9F77363">A9F77363—قاطع منتشر: ثلاثى, 63 أمبير, 10 ك أمبير</option>
+<option value="A9F77406">A9F77406—قاطع منتشر: رباعى, 6 أمبير, 10 ك أمبير</option>
+<option value="A9F77410">A9F77410—قاطع منتشر: رباعى, 10 أمبير, 10 ك أمبير</option>
+<option value="A9F77416">A9F77416—قاطع منتشر: رباعى, 16 أمبير, 10 ك أمبير</option>
+<option value="A9F77420">A9F77420—قاطع منتشر: رباعى, 20 أمبير, 10 ك أمبير</option>
+<option value="A9F77425">A9F77425—قاطع منتشر: رباعى, 25 أمبير, 10 ك أمبير</option>
+<option value="A9F77432">A9F77432—قاطع منتشر: رباعى, 32 أمبير, 10 ك أمبير</option>
+<option value="A9F77440">A9F77440—قاطع منتشر: رباعى, 40 أمبير, 10 ك أمبير</option>
+<option value="A9F77463">A9F77463—قاطع منتشر: رباعى, 63 أمبير, 10 ك أمبير</option>
+<option value="A9N18357">A9N18357—قاطع منتشر: ثنائى, 80 أمبير, 10 ك أمبير</option>
+<option value="A9N18361">A9N18361—قاطع منتشر: ثنائى, 80 أمبير, 10 ك أمبير</option>
+<option value="A9N18365">A9N18365—قاطع منتشر: ثلاثى, 80 أمبير, 10 ك أمبير</option>
+<option value="A9N18372">A9N18372—قاطع منتشر: رباعى, 80 أمبير, 10 ك أمبير</option>
+<option value="A9N18358">A9N18358—قاطع منتشر: ثنائى, 100 أمبير, 10 ك أمبير</option>
+<option value="A9N18362">A9N18362—قاطع منتشر: ثنائى, 100 أمبير, 10 ك أمبير</option>
+<option value="A9N18367">A9N18367—قاطع منتشر: ثلاثى, 100 أمبير, 10 ك أمبير</option>
+<option value="A9N18374">A9N18374—قاطع منتشر: رباعى, 100 أمبير, 10 ك أمبير</option>
+<option value="A9N18359">A9N18359—قاطع منتشر: ثنائى, 125 أمبير, 10 ك أمبير</option>
+<option value="A9N18363">A9N18363—قاطع منتشر: ثنائى, 125 أمبير, 10 ك أمبير</option>
+<option value="A9N18369">A9N18369—قاطع منتشر: ثلاثى, 125 أمبير, 10 ك أمبير</option>
+<option value="A9N18377">A9N18377—قاطع منتشر: رباعى, 125 أمبير, 10 ك أمبير</option>
+<option value="A9F87106">A9F87106—قاطع منتشر: أحادى, 6 أمبير, 15 ك أمبير</option>
+<option value="A9F87110">A9F87110—قاطع منتشر: أحادى, 10 أمبير, 15 ك أمبير</option>
+<option value="A9F87116">A9F87116—قاطع منتشر: أحادى, 16 أمبير, 15 ك أمبير</option>
+<option value="A9F87120">A9F87120—قاطع منتشر: أحادى, 20 أمبير, 15 ك أمبير</option>
+<option value="A9F87125">A9F87125—قاطع منتشر: أحادى, 25 أمبير, 15 ك أمبير</option>
+<option value="A9F87132">A9F87132—قاطع منتشر: أحادى, 32 أمبير, 15 ك أمبير</option>
+<option value="A9F87140">A9F87140—قاطع منتشر: أحادى, 40 أمبير, 15 ك أمبير</option>
+<option value="A9F87163">A9F87163—قاطع منتشر: أحادى, 63 أمبير, 15 ك أمبير</option>
+<option value="A9F87206">A9F87206—قاطع منتشر: ثنائى, 6 أمبير, 15 ك أمبير</option>
+<option value="A9F87210">A9F87210—قاطع منتشر: ثنائى, 10 أمبير, 15 ك أمبير</option>
+<option value="A9F87216">A9F87216—قاطع منتشر: ثنائى, 16 أمبير, 15 ك أمبير</option>
+<option value="A9F87220">A9F87220—قاطع منتشر: ثنائى, 20 أمبير, 15 ك أمبير</option>
+<option value="A9F87232">A9F87232—قاطع منتشر: ثنائى, 32 أمبير, 15 ك أمبير</option>
+<option value="A9F87240">A9F87240—قاطع منتشر: ثنائى, 40 أمبير, 15 ك أمبير</option>
+<option value="A9F87225">A9F87225—قاطع منتشر: ثنائى, 25 أمبير, 15 ك أمبير</option>
+<option value="A9F87263">A9F87263—قاطع منتشر: ثنائى, 63 أمبير, 15 ك أمبير</option>
+<option value="A9F87310">A9F87310—قاطع منتشر: ثلاثى, 10 أمبير, 15 ك أمبير</option>
+<option value="A9F87320">A9F87320—قاطع منتشر: ثلاثى, 20 أمبير, 15 ك أمبير</option>
+<option value="A9F87325">A9F87325—قاطع منتشر: ثلاثى, 25 أمبير, 15 ك أمبير</option>
+<option value="A9F87332">A9F87332—قاطع منتشر: ثلاثى, 32 أمبير, 15 ك أمبير</option>
+<option value="A9F87340">A9F87340—قاطع منتشر: ثلاثى, 40 أمبير, 15 ك أمبير</option>
+<option value="A9F87316">A9F87316—قاطع منتشر: ثلاثى, 16 أمبير, 15 ك أمبير</option>
+<option value="A9F87363">A9F87363—قاطع منتشر: ثلاثى, 63 أمبير, 15 ك أمبير</option>
+<option value="A9F87410">A9F87410—قاطع منتشر: رباعى, 10 أمبير, 15 ك أمبير</option>
+<option value="A9F87416">A9F87416—قاطع منتشر: رباعى, 16 أمبير, 15 ك أمبير</option>
+<option value="A9F87420">A9F87420—قاطع منتشر: رباعى, 20 أمبير, 15 ك أمبير</option>
+<option value="A9F87425">A9F87425—قاطع منتشر: رباعى, 25 أمبير, 15 ك أمبير</option>
+<option value="A9F87432">A9F87432—قاطع منتشر: رباعى, 32 أمبير, 15 ك أمبير</option>
+<option value="A9F87440">A9F87440—قاطع منتشر: رباعى, 40 أمبير, 15 ك أمبير</option>
+<option value="A9F87463">A9F87463—قاطع منتشر: رباعى, 63 أمبير, 15 ك أمبير</option>
+<option value="A9N18457">A9N18457—قاطع منتشر: ثنائى, 80 أمبير, 15 ك أمبير</option>
+<option value="A9N18468">A9N18468—قاطع منتشر: ثلاثى, 80 أمبير, 15 ك أمبير</option>
+<option value="A9N18458">A9N18458—قاطع منتشر: ثنائى, 100 أمبير, 15 ك أمبير</option>
+<option value="A9N18469">A9N18469—قاطع منتشر: ثلاثى, 100 أمبير, 15 ك أمبير</option>
+<option value="A9N18470">A9N18470—قاطع منتشر: ثلاثى, 125 أمبير, 15 ك أمبير</option>
+<option value="A9N18480">A9N18480—قاطع منتشر: رباعى, 100 أمبير, 15 ك أمبير</option>
+<option value="R9F32110">R9F32110—قاطع منتشر: أحادى, 10 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32116">R9F32116—قاطع منتشر: أحادى, 16 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32120">R9F32120—قاطع منتشر: أحادى, 20 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32125">R9F32125—قاطع منتشر: أحادى, 25 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32132">R9F32132—قاطع منتشر: أحادى, 32 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32140">R9F32140—قاطع منتشر: أحادى, 40 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32106">R9F32106—قاطع منتشر: أحادى, 6 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32163">R9F32163—قاطع منتشر: أحادى, 63 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32206">R9F32206—قاطع منتشر: ثنائى, 6 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32210">R9F32210—قاطع منتشر: ثنائى, 10 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32216">R9F32216—قاطع منتشر: ثنائى, 16 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32220">R9F32220—قاطع منتشر: ثنائى, 20 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32225">R9F32225—قاطع منتشر: ثنائى, 25 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32232">R9F32232—قاطع منتشر: ثنائى, 32 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32240">R9F32240—قاطع منتشر: ثنائى, 40 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32263">R9F32263—قاطع منتشر: ثنائى, 63 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32306">R9F32306—قاطع منتشر: ثلاثى, 6 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32310">R9F32310—قاطع منتشر: ثلاثى, 10 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32316">R9F32316—قاطع منتشر: ثلاثى, 16 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32320">R9F32320—قاطع منتشر: ثلاثى, 20 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32325">R9F32325—قاطع منتشر: ثلاثى, 25 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32332">R9F32332—قاطع منتشر: ثلاثى, 32 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32340">R9F32340—قاطع منتشر: ثلاثى, 40 أمبير, 4.5 ك أمبير</option>
+<option value="R9F32363">R9F32363—قاطع منتشر: ثلاثى, 63 أمبير, 4.5 ك أمبير</option>
+<option value="A9K24110">A9K24110—قاطع منتشر: أحادى, 10 أمبير, 6 ك أمبير</option>
+<option value="A9K24116">A9K24116—قاطع منتشر: أحادى, 16 أمبير, 6 ك أمبير</option>
+<option value="A9K24120">A9K24120—قاطع منتشر: أحادى, 20 أمبير, 6 ك أمبير</option>
+<option value="A9K24125">A9K24125—قاطع منتشر: أحادى, 25 أمبير, 6 ك أمبير</option>
+<option value="A9K24132">A9K24132—قاطع منتشر: أحادى, 32 أمبير, 6 ك أمبير</option>
+<option value="A9K24140">A9K24140—قاطع منتشر: أحادى, 40 أمبير, 6 ك أمبير</option>
+<option value="A9K24102">A9K24102—قاطع منتشر: أحادى, 2 أمبير, 6 ك أمبير</option>
+<option value="A9K24106">A9K24106—قاطع منتشر: أحادى, 6 أمبير, 6 ك أمبير</option>
+<option value="A9K24163">A9K24163—قاطع منتشر: أحادى, 63 أمبير, 6 ك أمبير</option>
+<option value="A9K24206">A9K24206—قاطع منتشر: ثنائى, 6 أمبير, 6 ك أمبير</option>
+<option value="A9K24210">A9K24210—قاطع منتشر: ثنائى, 10 أمبير, 6 ك أمبير</option>
+<option value="A9K24216">A9K24216—قاطع منتشر: ثنائى, 16 أمبير, 6 ك أمبير</option>
+<option value="A9K24220">A9K24220—قاطع منتشر: ثنائى, 20 أمبير, 6 ك أمبير</option>
+<option value="A9K24225">A9K24225—قاطع منتشر: ثنائى, 25 أمبير, 6 ك أمبير</option>
+<option value="A9K24232">A9K24232—قاطع منتشر: ثنائى, 32 أمبير, 6 ك أمبير</option>
+<option value="A9K24240">A9K24240—قاطع منتشر: ثنائى, 40 أمبير, 6 ك أمبير</option>
+<option value="A9K24263">A9K24263—قاطع منتشر: ثنائى, 63 أمبير, 6 ك أمبير</option>
+<option value="A9K24306">A9K24306—قاطع منتشر: ثلاثى, 6 أمبير, 6 ك أمبير</option>
+<option value="A9K24310">A9K24310—قاطع منتشر: ثلاثى, 10 أمبير, 6 ك أمبير</option>
+<option value="A9K24316">A9K24316—قاطع منتشر: ثلاثى, 16 أمبير, 6 ك أمبير</option>
+<option value="A9K24320">A9K24320—قاطع منتشر: ثلاثى, 20 أمبير, 6 ك أمبير</option>
+<option value="A9K24325">A9K24325—قاطع منتشر: ثلاثى, 25 أمبير, 6 ك أمبير</option>
+<option value="A9K24332">A9K24332—قاطع منتشر: ثلاثى, 32 أمبير, 6 ك أمبير</option>
+<option value="A9K24340">A9K24340—قاطع منتشر: ثلاثى, 40 أمبير, 6 ك أمبير</option>
+<option value="A9K24363">A9K24363—قاطع منتشر: ثلاثى, 63 أمبير, 6 ك أمبير</option>
+<option value="G12T3F25">G12T3F25—قاطع مولدد: ثلاثى, 25 أمبير ثابت, 10 ك أمبير</option>
+<option value="G12T3F32">G12T3F32—قاطع مولدد: ثلاثى, 32 أمبير ثابت, 10 ك أمبير</option>
+<option value="G12T3F40">G12T3F40—قاطع مولدد: ثلاثى, 40 أمبير ثابت, 10 ك أمبير</option>
+<option value="G12T3F63">G12T3F63—قاطع مولدد: ثلاثى, 63 أمبير ثابت, 10 ك أمبير</option>
+<option value="G12T3F80">G12T3F80—قاطع مولدد: ثلاثى, 80 أمبير ثابت, 10 ك أمبير</option>
+<option value="G12T3F100">G12T3F100—قاطع مولدد: ثلاثى, 100 أمبير ثابت, 10 ك أمبير</option>
+<option value="G12T3F125">G12T3F125—قاطع مولدد: ثلاثى, 125 أمبير ثابت, 10 ك أمبير</option>
+<option value="G12E3F25">G12E3F25—قاطع مولدد: ثلاثى, 25 أمبير ثابت, 15 ك أمبير</option>
+<option value="G12E3F32">G12E3F32—قاطع مولدد: ثلاثى, 32 أمبير ثابت, 15 ك أمبير</option>
+<option value="G12E3F40">G12E3F40—قاطع مولدد: ثلاثى, 40 أمبير ثابت, 15 ك أمبير</option>
+<option value="G12E3F63">G12E3F63—قاطع مولدد: ثلاثى, 63 أمبير ثابت, 15 ك أمبير</option>
+<option value="G12E3F80">G12E3F80—قاطع مولدد: ثلاثى, 80 أمبير ثابت, 15 ك أمبير</option>
+<option value="G12E3F100">G12E3F100—قاطع مولدد: ثلاثى, 100 أمبير ثابت, 15 ك أمبير</option>
+<option value="G12E3F125">G12E3F125—قاطع مولدد: ثلاثى, 125 أمبير ثابت, 15 ك أمبير</option>
+<option value="G12F3F25">G12F3F25—قاطع مولدد: ثلاثى, 25 أمبير ثابت, 30 ك أمبير</option>
+<option value="G12F3F32">G12F3F32—قاطع مولدد: ثلاثى, 32 أمبير ثابت, 30 ك أمبير</option>
+<option value="G12F3F40">G12F3F40—قاطع مولدد: ثلاثى, 40 أمبير ثابت, 30 ك أمبير</option>
+<option value="G12F3F63">G12F3F63—قاطع مولدد: ثلاثى, 63 أمبير ثابت, 30 ك أمبير</option>
+<option value="G12F3F80">G12F3F80—قاطع مولدد: ثلاثى, 80 أمبير ثابت, 30 ك أمبير</option>
+<option value="G12F3F100">G12F3F100—قاطع مولدد: ثلاثى, 100 أمبير ثابت, 30 ك أمبير</option>
+<option value="G12F3F125">G12F3F125—قاطع مولدد: ثلاثى, 125 أمبير ثابت, 30 ك أمبير</option>
+<option value="G20B3A160">G20B3A160—قاطع مولدد: ثلاثى, 160 أمبير متغير, 25 ك أمبير</option>
+<option value="G20B3A200">G20B3A200—قاطع مولدد: ثلاثى, 200 أمبير متغير, 25 ك أمبير</option>
+<option value="G25B3A250">G25B3A250—قاطع مولدد: ثلاثى, 250 أمبير متغير, 25 ك أمبير</option>
+<option value="G20F3A160">G20F3A160—قاطع مولدد: ثلاثى, 160 أمبير متغير, 36 ك أمبير</option>
+<option value="G20F3A200">G20F3A200—قاطع مولدد: ثلاثى, 200 أمبير متغير, 36 ك أمبير</option>
+<option value="G25F3A250">G25F3A250—قاطع مولدد: ثلاثى, 250 أمبير متغير, 36 ك أمبير</option>
+<option value="G40F3A400">G40F3A400—قاطع مولدد: ثلاثى, 400 أمبير متغير, 36 ك أمبير</option>
+<option value="G40N3A400">G40N3A400—قاطع مولدد: ثلاثى, 400 أمبير متغير, 50 ك أمبير</option>
+<option value="G80N3E630">G80N3E630—قاطع مولدد: ثلاثى, 630 أمبير متغير, 50 ك أمبير</option>
+<option value="G80N3E800">G80N3E800—قاطع مولدد: ثلاثى, 800 أمبير متغير, 50 ك أمبير</option>
+<option value="LV510307">LV510307—قاطع مولدد: ثلاثى, 100 أمبير متغير, 25 ك أمبير</option>
+<option value="LV510306">LV510306—قاطع مولدد: ثلاثى, 80 أمبير متغير, 25 ك أمبير</option>
+<option value="LV510305">LV510305—قاطع مولدد: ثلاثى, 63 أمبير متغير, 25 ك أمبير</option>
+<option value="LV510303">LV510303—قاطع مولدد: ثلاثى, 40 أمبير متغير, 25 ك أمبير</option>
+<option value="LV510302">LV510302—قاطع مولدد: ثلاثى, 32 أمبير متغير, 25 ك أمبير</option>
+<option value="LV510301">LV510301—قاطع مولدد: ثلاثى, 25 أمبير متغير, 25 ك أمبير</option>
+<option value="LV516302">LV516302—قاطع مولدد: ثلاثى, 125 أمبير متغير, 25 ك أمبير</option>
+<option value="LV516303">LV516303—قاطع مولدد: ثلاثى, 160 أمبير متغير, 25 ك أمبير</option>
+<option value="LV525302">LV525302—قاطع مولدد: ثلاثى, 200 أمبير متغير, 25 ك أمبير</option>
+<option value="LV525303">LV525303—قاطع مولدد: ثلاثى, 250 أمبير متغير, 25 ك أمبير</option>
+<option value="LV510337">LV510337—قاطع مولدد: ثلاثى, 100 أمبير متغير, 36 ك أمبير</option>
+<option value="LV510336">LV510336—قاطع مولدد: ثلاثى, 80 أمبير متغير, 36 ك أمبير</option>
+<option value="LV510335">LV510335—قاطع مولدد: ثلاثى, 63 أمبير متغير, 36 ك أمبير</option>
+<option value="LV510333">LV510333—قاطع مولدد: ثلاثى, 40 أمبير متغير, 36 ك أمبير</option>
+<option value="LV510332">LV510332—قاطع مولدد: ثلاثى, 32 أمبير متغير, 36 ك أمبير</option>
+<option value="LV510331">LV510331—قاطع مولدد: ثلاثى, 25 أمبير متغير, 36 ك أمبير</option>
+<option value="LV516332">LV516332—قاطع مولدد: ثلاثى, 125 أمبير متغير, 36 ك أمبير</option>
+<option value="LV516333">LV516333—قاطع مولدد: ثلاثى, 160 أمبير متغير, 36 ك أمبير</option>
+<option value="LV525332">LV525332—قاطع مولدد: ثلاثى, 200 أمبير متغير, 36 ك أمبير</option>
+<option value="LV525333">LV525333—قاطع مولدد: ثلاثى, 250 أمبير متغير, 36 ك أمبير</option>
+<option value="LV540306">LV540306—قاطع مولدد: ثلاثى, 400 أمبير متغير, 36 ك أمبير</option>
+<option value="LV540316">LV540316—قاطع مولدد: ثلاثى, 400 أمبير متغير, 50 ك أمبير</option>
+<option value="LV563305">LV563305—قاطع مولدد: ثلاثى, 500 أمبير متغير, 36 ك أمبير</option>
+<option value="LV563306">LV563306—قاطع مولدد: ثلاثى, 600 أمبير متغير, 36 ك أمبير</option>
+<option value="LV563315">LV563315—قاطع مولدد: ثلاثى, 500 أمبير متغير, 50 ك أمبير</option>
+<option value="LV563316">LV563316—قاطع مولدد: ثلاثى, 600 أمبير متغير, 50 ك أمبير</option>
+<option value="LV540505">LV540505—قاطع مولدد: ثلاثى, 400 أمبير متغير, 36 ك أمبير</option>
+<option value="LV540510">LV540510—قاطع مولدد: ثلاثى, 400 أمبير متغير, 50 ك أمبير</option>
+<option value="LV563505">LV563505—قاطع مولدد: ثلاثى, 630 أمبير متغير, 36 ك أمبير</option>
+<option value="LV563510">LV563510—قاطع مولدد: ثلاثى, 630 أمبير متغير, 50 ك أمبير</option>
+<option value="C10B3TM100">C10B3TM100—قاطع مولدد: ثلاثى, 100 أمبير متغير, 25 ك أمبير</option>
+<option value="C16B3TM125">C16B3TM125—قاطع مولدد: ثلاثى, 125 أمبير متغير, 25 ك أمبير</option>
+<option value="C16B3TM160">C16B3TM160—قاطع مولدد: ثلاثى, 160 أمبير متغير, 25 ك أمبير</option>
+<option value="C25B3TM200">C25B3TM200—قاطع مولدد: ثلاثى, 200 أمبير متغير, 25 ك أمبير</option>
+<option value="C25B3TM250">C25B3TM250—قاطع مولدد: ثلاثى, 250 أمبير متغير, 25 ك أمبير</option>
+<option value="C10F3TM100">C10F3TM100—قاطع مولدد: ثلاثى, 100 أمبير متغير, 36 ك أمبير</option>
+<option value="C16F3TM125">C16F3TM125—قاطع مولدد: ثلاثى, 125 أمبير متغير, 36 ك أمبير</option>
+<option value="C16F3TM160">C16F3TM160—قاطع مولدد: ثلاثى, 160 أمبير متغير, 36 ك أمبير</option>
+<option value="C25F3TM200">C25F3TM200—قاطع مولدد: ثلاثى, 200 أمبير متغير, 36 ك أمبير</option>
+<option value="C25F3TM250">C25F3TM250—قاطع مولدد: ثلاثى, 250 أمبير متغير, 36 ك أمبير</option>
+<option value="C40F32D400">C40F32D400—قاطع مولدد: ثلاثى, 400 أمبير متغير, 36 ك أمبير</option>
+<option value="C63F32D630">C63F32D630—قاطع مولدد: ثلاثى, 630 أمبير متغير, 36 ك أمبير</option>
+<option value="C40N32D400">C40N32D400—قاطع مولدد: ثلاثى, 400 أمبير متغير, 50 ك أمبير</option>
+<option value="C63N32D630">C63N32D630—قاطع مولدد: ثلاثى, 630 أمبير متغير, 50 ك أمبير</option>
+<option value="C10B6TM040">C10B6TM040—قاطع مولدد: رباعى, 40 أمبير متغير, 25 ك أمبير</option>
+<option value="C10B6TM063">C10B6TM063—قاطع مولدد: رباعى, 63 أمبير متغير, 25 ك أمبير</option>
+<option value="C10B6TM080">C10B6TM080—قاطع مولدد: رباعى, 80 أمبير متغير, 25 ك أمبير</option>
+<option value="C10B6TM100">C10B6TM100—قاطع مولدد: رباعى, 100 أمبير متغير, 25 ك أمبير</option>
+<option value="C16B6TM160">C16B6TM160—قاطع مولدد: رباعى, 160 أمبير متغير, 25 ك أمبير</option>
+<option value="C25B6TM250">C25B6TM250—قاطع مولدد: رباعى, 250 أمبير متغير, 25 ك أمبير</option>
+<option value="C10F6TM100">C10F6TM100—قاطع مولدد: رباعى, 63 أمبير متغير, 36 ك أمبير</option>
+<option value="C10F6TM100">C10F6TM100—قاطع مولدد: رباعى, 63 أمبير متغير, 36 ك أمبير</option>
+<option value="C16F6TM125">C16F6TM125—قاطع مولدد: رباعى, 125 أمبير متغير, 36 ك أمبير</option>
+<option value="C16F6TM160">C16F6TM160—قاطع مولدد: رباعى, 160 أمبير متغير, 36 ك أمبير</option>
+<option value="C25F6TM200">C25F6TM200—قاطع مولدد: رباعى, 200 أمبير متغير, 36 ك أمبير</option>
+<option value="C25F6TM250">C25F6TM250—قاطع مولدد: رباعى, 250 أمبير متغير, 36 ك أمبير</option>
+<option value="C40F42D400">C40F42D400—قاطع مولدد: رباعى, 400 أمبير متغير, 36 ك أمبير</option>
+<option value="C63F42D630">C63F42D630—قاطع مولدد: رباعى, 630 أمبير متغير, 36 ك أمبير</option>
+<option value="C40N42D400">C40N42D400—قاطع مولدد: رباعى, 400 أمبير متغير, 50 ك أمبير</option>
+<option value="C63N42D630">C63N42D630—قاطع مولدد: رباعى, 630 أمبير متغير, 50 ك أمبير</option>
+<option value="A9R10225">A9R10225—RCCB, Acti9 iID, 2P, 25A, 10mA, type AC</option>
+<option value="A9R41225">A9R41225—RCCB, Acti9 iID, 2P, 25A, 30mA, type AC</option>
+<option value="A9R41240">A9R41240—RCCB, Acti9 iID, 2P, 40A, 30mA, type AC</option>
+<option value="A9R41263">A9R41263—RCCB, Acti9 iID, 2P, 63A, 30mA, type AC</option>
+<option value="A9R11291">A9R11291—RCCB, Acti9 iID, 2P, 100A, 30mA, type AC</option>
+<option value="A9R41425">A9R41425—RCCB, Acti9 iID, 4P, 25A, 30mA, type AC</option>
+<option value="A9R41440">A9R41440—RCCB, Acti9 iID, 4P, 40A, 30mA, type AC</option>
+<option value="A9R41463">A9R41463—RCCB, Acti9 iID, 4P, 63A, 30mA, type AC</option>
+<option value="A9R11480">A9R11480—RCCB, Acti9 iID, 4P, 80A, 30mA, type AC</option>
+<option value="A9R11491">A9R11491—RCCB, Acti9 iID, 4P, 100A, 30mA, type AC</option>
+<option value="A9R44225">A9R44225—RCCB, Acti9 iID, 2P, 25A, 300mA, type AC</option>
+<option value="A9R44240">A9R44240—RCCB, Acti9 iID, 2P, 40A, 300mA, type AC</option>
+<option value="A9R44263">A9R44263—RCCB, Acti9 iID, 2P, 63A, 300mA, type AC</option>
+<option value="A9R44425">A9R44425—RCCB, Acti9 iID, 4P, 25A, 300mA, type AC</option>
+<option value="A9R44440">A9R44440—RCCB, Acti9 iID, 4P, 40A, 300mA, type AC</option>
+<option value="A9R44463">A9R44463—RCCB, Acti9 iID, 4P, 63A, 300mA, type AC</option>
+<option value="A9R14480">A9R14480—RCCB, Acti9 iID, 4P, 80A, 300mA, type AC</option>
+<option value="A9R14491">A9R14491—RCCB, Acti9 iID, 4P, 100A, 300mA, type AC</option>
+<option value="A9D11810">A9D11810—RCBO, Acti9 iC60H, 1P + N, C curve, 10A, 30mA, 240 V</option>
+<option value="A9D11816">A9D11816—RCBO, Acti9 iC60H, 1P + N, C curve, 16A, 30mA, 240 V</option>
+<option value="A9D11820">A9D11820—RCBO, Acti9 iC60H, 1P + N, C curve, 20A, 30mA, 240 V</option>
+<option value="A9D11825">A9D11825—RCBO, Acti9 iC60H, 1P + N, C curve, 25A, 30mA, 240 V</option>
+<option value="A9D11832">A9D11832—RCBO, Acti9 iC60H, 1P + N, C curve, 32A, 30mA, 240 V</option>
+<option value="A9D11840">A9D11840—RCBO, Acti9 iC60H, 1P + N, C curve, 40A, 30mA, 240 V</option>
+<option value="R9R51225">R9R51225—RCCB, Resi9, 2P, 25A, 30mA, type AC</option>
+<option value="R9R51240">R9R51240—RCCB, Resi9, 2P, 40A, 30mA, type AC</option>
+<option value="R9R51263">R9R51263—RCCB, Resi9, 2P, 63A, 30mA, type AC</option>
+<option value="R9R51425">R9R51425—RCCB, Resi9, 4P, 25A, 30mA, type AC</option>
+<option value="R9R51440">R9R51440—RCCB, Resi9, 4P, 40A, 30mA, type AC</option>
+<option value="R9R51463">R9R51463—RCCB, Resi9, 4P, 63A, 30mA, type AC</option>
+<option value="LC1D09B7">LC1D09B7—كونتاكتور: 9 أمبير, 4 ك وات , 24 فولت تيار متردد</option>
+<option value="LC1D09F7">LC1D09F7—كونتاكتور: 9 أمبير, 4 ك وات , 110 فولت تيار متردد</option>
+<option value="LC1D09M7">LC1D09M7—كونتاكتور: 9 أمبير, 4 ك وات , 220 فولت تيار متردد</option>
+<option value="LC1D09Q7">LC1D09Q7—كونتاكتور: 9 أمبير, 4 ك وات , 380 فولت تيار متردد</option>
+<option value="LC1D12B7">LC1D12B7—كونتاكتور: 12 أمبير, 5.5 ك وات , 24 فولت تيار متردد</option>
+<option value="LC1D12F7">LC1D12F7—كونتاكتور: 12 أمبير, 5.5 ك وات , 110 فولت تيار متردد</option>
+<option value="LC1D12M7">LC1D12M7—كونتاكتور: 12 أمبير, 5.5 ك وات , 220 فولت تيار متردد</option>
+<option value="LC1D12Q7">LC1D12Q7—كونتاكتور: 12 أمبير, 5.5 ك وات , 380 فولت تيار متردد</option>
+<option value="LC1D18B7">LC1D18B7—كونتاكتور: 18 أمبير, 7.5 ك وات , 24 فولت تيار متردد</option>
+<option value="LC1D18F7">LC1D18F7—كونتاكتور: 18 أمبير, 7.5 ك وات , 110 فولت تيار متردد</option>
+<option value="LC1D18M7">LC1D18M7—كونتاكتور: 18 أمبير, 7.5 ك وات , 220 فولت تيار متردد</option>
+<option value="LC1D18Q7">LC1D18Q7—كونتاكتور: 18 أمبير, 7.5 ك وات , 380 فولت تيار متردد</option>
+<option value="LC1D25B7">LC1D25B7—كونتاكتور: 25 أمبير, 11 ك وات , 24 فولت تيار متردد</option>
+<option value="LC1D25F7">LC1D25F7—كونتاكتور: 25 أمبير, 11 ك وات , 110 فولت تيار متردد</option>
+<option value="LC1D25M7">LC1D25M7—كونتاكتور: 25 أمبير, 11 ك وات , 220 فولت تيار متردد</option>
+<option value="LC1D25Q7">LC1D25Q7—كونتاكتور: 25 أمبير, 11 ك وات , 380 فولت تيار متردد</option>
+<option value="LC1D32B7">LC1D32B7—كونتاكتور: 32 أمبير, 15 ك وات , 24 فولت تيار متردد</option>
+<option value="LC1D32F7">LC1D32F7—كونتاكتور: 32 أمبير, 15 ك وات , 110 فولت تيار متردد</option>
+<option value="LC1D32M7">LC1D32M7—كونتاكتور: 32 أمبير, 15 ك وات , 220 فولت تيار متردد</option>
+<option value="LC1D32Q7">LC1D32Q7—كونتاكتور: 32 أمبير, 15 ك وات , 380 فولت تيار متردد</option>
+<option value="LC1D38B7">LC1D38B7—كونتاكتور: 38 أمبير, 18.5 ك وات , 24 فولت تيار متردد</option>
+<option value="LC1D38F7">LC1D38F7—كونتاكتور: 38 أمبير, 18.5 ك وات , 110 فولت تيار متردد</option>
+<option value="LC1D38M7">LC1D38M7—كونتاكتور: 38 أمبير, 18.5 ك وات , 220 فولت تيار متردد</option>
+<option value="LC1D38Q7">LC1D38Q7—كونتاكتور: 38 أمبير, 18.5 ك وات , 380 فولت تيار متردد</option>
+<option value="LC1D40AB7">LC1D40AB7—كونتاكتور: 40 أمبير, 18.5 ك وات , 24 فولت تيار متردد</option>
+<option value="LC1D40AF7">LC1D40AF7—كونتاكتور: 40 أمبير, 18.5 ك وات , 110 فولت تيار متردد</option>
+<option value="LC1D40AM7">LC1D40AM7—كونتاكتور: 40 أمبير, 18.5 ك وات , 220 فولت تيار متردد</option>
+<option value="LC1D40AQ7">LC1D40AQ7—كونتاكتور: 40 أمبير, 18.5 ك وات , 380 فولت تيار متردد</option>
+<option value="LC1D50AB7">LC1D50AB7—كونتاكتور: 50 أمبير, 22 ك وات , 24 فولت تيار متردد</option>
+<option value="LC1D50AF7">LC1D50AF7—كونتاكتور: 50 أمبير, 22 ك وات , 110 فولت تيار متردد</option>
+<option value="LC1D50AM7">LC1D50AM7—كونتاكتور: 50 أمبير, 22 ك وات , 220 فولت تيار متردد</option>
+<option value="LC1D50AQ7">LC1D50AQ7—كونتاكتور: 50 أمبير, 22 ك وات , 380 فولت تيار متردد</option>
+<option value="LC1D65AB7">LC1D65AB7—كونتاكتور: 65 أمبير, 30 ك وات , 24 فولت تيار متردد</option>
+<option value="LC1D65AF7">LC1D65AF7—كونتاكتور: 65 أمبير, 30 ك وات , 110 فولت تيار متردد</option>
+<option value="LC1D65AM7">LC1D65AM7—كونتاكتور: 65 أمبير, 30 ك وات , 220 فولت تيار متردد</option>
+<option value="LC1D65AQ7">LC1D65AQ7—كونتاكتور: 65 أمبير, 30 ك وات , 380 فولت تيار متردد</option>
+<option value="LC1D80AB7">LC1D80AB7—كونتاكتور: 80 أمبير, 37 ك وات , 24 فولت تيار متردد</option>
+<option value="LC1D80AF7">LC1D80AF7—كونتاكتور: 80 أمبير, 37 ك وات , 110 فولت تيار متردد</option>
+<option value="LC1D80AM7">LC1D80AM7—كونتاكتور: 80 أمبير, 37 ك وات , 220 فولت تيار متردد</option>
+<option value="LC1D80AQ7">LC1D80AQ7—كونتاكتور: 80 أمبير, 37 ك وات , 380 فولت تيار متردد</option>
+<option value="LC1D80B7">LC1D80B7—كونتاكتور: 80 أمبير, 37 ك وات , 24 فولت تيار متردد</option>
+<option value="LC1D80F7">LC1D80F7—كونتاكتور: 80 أمبير, 37 ك وات , 110 فولت تيار متردد</option>
+<option value="LC1D80M7">LC1D80M7—كونتاكتور: 80 أمبير, 37 ك وات , 220 فولت تيار متردد</option>
+<option value="LC1D80Q7">LC1D80Q7—كونتاكتور: 80 أمبير, 37 ك وات , 380 فولت تيار متردد</option>
+<option value="LC1D95B7">LC1D95B7—كونتاكتور: 95 أمبير, 45 ك وات , 24 فولت تيار متردد</option>
+<option value="LC1D95F7">LC1D95F7—كونتاكتور: 95 أمبير, 45 ك وات , 110 فولت تيار متردد</option>
+<option value="LC1D95M7">LC1D95M7—كونتاكتور: 95 أمبير, 45 ك وات , 220 فولت تيار متردد</option>
+<option value="LC1D95Q7">LC1D95Q7—كونتاكتور: 95 أمبير, 45 ك وات , 380 فولت تيار متردد</option>
+<option value="LC1D115B7">LC1D115B7—كونتاكتور: 115 أمبير, 55 ك وات , 24 فولت تيار متردد</option>
+<option value="LC1D115F7">LC1D115F7—كونتاكتور: 115 أمبير, 55 ك وات , 110 فولت تيار متردد</option>
+<option value="LC1D115M7">LC1D115M7—كونتاكتور: 115 أمبير, 55 ك وات , 220 فولت تيار متردد</option>
+<option value="LC1D115Q7">LC1D115Q7—كونتاكتور: 115 أمبير, 55 ك وات , 380 فولت تيار متردد</option>
+<option value="LC1D150B7">LC1D150B7—كونتاكتور: 150 أمبير, 75 ك وات , 24 فولت تيار متردد</option>
+<option value="LC1D150F7">LC1D150F7—كونتاكتور: 150 أمبير, 75 ك وات , 110 فولت تيار متردد</option>
+<option value="LC1D150M7">LC1D150M7—كونتاكتور: 150 أمبير, 75 ك وات , 220 فولت تيار متردد</option>
+<option value="LC1D150Q7">LC1D150Q7—كونتاكتور: 150 أمبير, 75 ك وات , 380 فولت تيار متردد</option>
+<option value="LC1D09BD">LC1D09BD—كونتاكتور: 9 أمبير, 4 ك وات , 24 فولت تيار  مستمر</option>
+<option value="LC1D12BD">LC1D12BD—كونتاكتور: 12 أمبير, 5.5 ك وات , 24 فولت تيار  مستمر</option>
+<option value="LC1D18BD">LC1D18BD—كونتاكتور: 18 أمبير, 7.5 ك وات , 24 فولت تيار  مستمر</option>
+<option value="LC1D25BD">LC1D25BD—كونتاكتور: 25 أمبير, 11 ك وات , 24 فولت تيار  مستمر</option>
+<option value="LC1D32BD">LC1D32BD—كونتاكتور: 32 أمبير, 15 ك وات , 24 فولت تيار  مستمر</option>
+<option value="LC1D38BD">LC1D38BD—كونتاكتور: 38 أمبير, 18.5 ك وات , 24 فولت تيار  مستمر</option>
+<option value="LC1D40ABBE / BNE">LC1D40ABBE / BNE—كونتاكتور: 40 أمبير, 18.5 ك وات , 24 فولت تيار  مستمر</option>
+<option value="LC1D50ABBE / BNE">LC1D50ABBE / BNE—كونتاكتور: 50 أمبير, 22 ك وات , 24 فولت تيار  مستمر</option>
+<option value="LC1D65ABBE / BNE">LC1D65ABBE / BNE—كونتاكتور: 65 أمبير, 30 ك وات , 24 فولت تيار  مستمر</option>
+<option value="LC1D80BD">LC1D80BD—كونتاكتور: 80 أمبير, 37 ك وات , 24 فولت تيار  مستمر</option>
+<option value="LC1D098P7">LC1D098P7—Contactor - 4P(2NO + 2NC) - AC-1 - <= 440V 20A, 230VAC coil</option>
+<option value="LC1D128M7">LC1D128M7—Contactor - 4P(2NO + 2NC) - AC-1 - <= 440V 25A, 220VAC coil</option>
+<option value="LC1D188M7">LC1D188M7—Contactor - 4P(2NO + 2NC) - AC-1 - <= 440V 32A, 220VAC coil</option>
+<option value="LC1D258M7">LC1D258M7—Contactor - 4P(2NO + 2NC) - AC-1 - <= 440V 40A, 220VAC coil</option>
+<option value="LC1D40008M7">LC1D40008M7—Contactor - 4P(2NO + 2NC) - AC-1 - <= 440V 60A, 220VAC coil</option>
+<option value="LC1D80004M7">LC1D80004M7—Contactor - 4P(2NO + 2NC) - AC-1 - <= 440V 125A, 220VAC coil</option>
+<option value="LC1DT20M7">LC1DT20M7—Contactor - 4P(4NO) - AC-1 - <= 440V 20A, 220VAC coil</option>
+<option value="LC1DT25M7">LC1DT25M7—Contactor - 4P(4NO) - AC-1 - <= 440V 25A, 220VAC coil</option>
+<option value="LC1DT32M7">LC1DT32M7—Contactor - 4P(4NO) - AC-1 - <= 440V 32A, 220VAC coil</option>
+<option value="LC1DT40M7">LC1DT40M7—Contactor - 4P(4NO) - AC-1 - <= 440V 40A, 220VAC coil</option>
+<option value="LC1DT60AM7">LC1DT60AM7—Contactor - 4P(4NO) - AC-1 - <= 440V 60A, 220VAC coil</option>
+<option value="LC1DT80AM7">LC1DT80AM7—Contactor - 4P(4NO) - AC-1 - <= 440V 80A, 220VAC coil</option>
+<option value="LC1F185B7">LC1F185B7—كونتاكتور: 185 أمبير, 90ك وات ,  24فولت تيار متردد</option>
+<option value="LC1F185F7">LC1F185F7—كونتاكتور: 185 أمبير, 90ك وات ,  110فولت تيار متردد</option>
+<option value="LC1F185M7">LC1F185M7—كونتاكتور: 185 أمبير, 90ك وات ,  220فولت تيار متردد</option>
+<option value="LC1F185Q7">LC1F185Q7—كونتاكتور: 185 أمبير, 90ك وات ,  380فولت تيار متردد</option>
+<option value="LC1F265B7">LC1F265B7—كونتاكتور: 265 أمبير, 132ك وات ,  24فولت تيار متردد</option>
+<option value="LC1F265F7">LC1F265F7—كونتاكتور: 265 أمبير, 132ك وات ,  110فولت تيار متردد</option>
+<option value="LC1F265M7">LC1F265M7—كونتاكتور: 265 أمبير, 132ك وات ,  220فولت تيار متردد</option>
+<option value="LC1F265Q7">LC1F265Q7—كونتاكتور: 265 أمبير, 132ك وات ,  380فولت تيار متردد</option>
+<option value="LC1F330B7">LC1F330B7—كونتاكتور: 330 أمبير, 160ك وات ,  24فولت تيار متردد</option>
+<option value="LC1F330F7">LC1F330F7—كونتاكتور: 330 أمبير, 160ك وات ,  110فولت تيار متردد</option>
+<option value="LC1F330M7">LC1F330M7—كونتاكتور: 330 أمبير, 160ك وات ,  220فولت تيار متردد</option>
+<option value="LC1F330Q7">LC1F330Q7—كونتاكتور: 330 أمبير, 160ك وات ,  380فولت تيار متردد</option>
+<option value="LC1F400B7">LC1F400B7—كونتاكتور: 400 أمبير, 200ك وات ,  24فولت تيار متردد</option>
+<option value="LC1F400F7">LC1F400F7—كونتاكتور: 400 أمبير, 200ك وات ,  110فولت تيار متردد</option>
+<option value="LC1F400M7">LC1F400M7—كونتاكتور: 400 أمبير, 200ك وات ,  220فولت تيار متردد</option>
+<option value="LC1F400Q7">LC1F400Q7—كونتاكتور: 400 أمبير, 200ك وات ,  380فولت تيار متردد</option>
+<option value="LC1F500B7">LC1F500B7—كونتاكتور: 500 أمبير, 250ك وات ,  24فولت تيار متردد</option>
+<option value="LC1F500F7">LC1F500F7—كونتاكتور: 500 أمبير, 250ك وات ,  110فولت تيار متردد</option>
+<option value="LC1F500M7">LC1F500M7—كونتاكتور: 500 أمبير, 250ك وات ,  220فولت تيار متردد</option>
+<option value="LC1F500Q7">LC1F500Q7—كونتاكتور: 500 أمبير, 250ك وات ,  380فولت تيار متردد</option>
+<option value="LC1F630B7">LC1F630B7—كونتاكتور: 630 أمبير, 335ك وات ,  24فولت تيار متردد</option>
+<option value="LC1F630F7">LC1F630F7—كونتاكتور: 630 أمبير, 335ك وات ,  110فولت تيار متردد</option>
+<option value="LC1F630M7">LC1F630M7—كونتاكتور: 630 أمبير, 335ك وات ,  220فولت تيار متردد</option>
+<option value="LC1F630Q7">LC1F630Q7—كونتاكتور: 630 أمبير, 335ك وات ,  380فولت تيار متردد</option>
+<option value="LC1G115KUEN">LC1G115KUEN—Contactor - 3P(3NO) - AC-3 - <= 440V 115A (55KW), 100…250VAC/DC coil </option>
+<option value="LC1G150KUEN">LC1G150KUEN—Contactor - 3P(3NO) - AC-3 - <= 440V 150A (75KW), 100…250VAC/DC coil</option>
+<option value="LC1G185KUEN">LC1G185KUEN—Contactor - 3P(3NO) - AC-3 - <= 440V 185A (90KW), 100…250VAC/DC coil</option>
+<option value="LC1G225KUEN">LC1G225KUEN—Contactor - 3P(3NO) - AC-3 - <= 440V 225A (110KW), 100…250VAC/DC coil</option>
+<option value="LC1G265KUEN">LC1G265KUEN—Contactor - 3P(3NO) - AC-3 - <= 440V 265A (132KW), 100…250VAC/DC coil</option>
+<option value="LC1G330KUEN">LC1G330KUEN—Contactor - 3P(3NO) - AC-3 - <= 440V 330A (160KW), 100…250VAC/DC coil</option>
+<option value="LC1G400KUEN">LC1G400KUEN—Contactor - 3P(3NO) - AC-3 - <= 440V 400A (200KW), 100…250VAC/DC coil</option>
+<option value="LC1G115LSEA">LC1G115LSEA—Contactor - 3P(3NO) - AC-3 - <= 440V 115A (55KW), 200…500VAC/DC coil </option>
+<option value="LC1G150LSEA">LC1G150LSEA—Contactor - 3P(3NO) - AC-3 - <= 440V 150A (75KW), 200…500VAC/DC coil</option>
+<option value="LC1G185LSEA">LC1G185LSEA—Contactor - 3P(3NO) - AC-3 - <= 440V 185A (90KW), 200…500VAC/DC coil</option>
+<option value="LC1G225LSEA">LC1G225LSEA—Contactor - 3P(3NO) - AC-3 - <= 440V 225A (110KW), 200…500VAC/DC coil</option>
+<option value="LC1G265LSEA">LC1G265LSEA—Contactor - 3P(3NO) - AC-3 - <= 440V 265A (132KW), 200…500VAC/DC coil</option>
+<option value="LC1G330LSEA">LC1G330LSEA—Contactor - 3P(3NO) - AC-3 - <= 440V 330A (160KW), 200…500VAC/DC coil</option>
+<option value="LC1G400LSEA">LC1G400LSEA—Contactor - 3P(3NO) - AC-3 - <= 440V 400A (200KW), 200…500VAC/DC coil</option>
+<option value="LRD03">LRD03—أوفرلود حرارى:  0.25...0.4 أمبير</option>
+<option value="LRD04">LRD04—أوفرلود حرارى:  0.4...0.63 أمبير</option>
+<option value="LRD05">LRD05—أوفرلود حرارى:  0.63...1.0 أمبير</option>
+<option value="LRD06">LRD06—أوفرلود حرارى:  1.0...1.6 أمبير</option>
+<option value="LRD07">LRD07—أوفرلود حرارى: 1.6...2.5 أمبير</option>
+<option value="LRD08">LRD08—أوفرلود حرارى: 2.5...4  أمبير</option>
+<option value="LRD10">LRD10—أوفرلود حرارى: 4...6  أمبير</option>
+<option value="LRD12">LRD12—أوفرلود حرارى: 5.5...8  أمبير</option>
+<option value="LRD14">LRD14—أوفرلود حرارى: 7...10  أمبير</option>
+<option value="LRD16">LRD16—أوفرلود حرارى: 9...13 أمبير</option>
+<option value="LRD21">LRD21—أوفرلود حرارى: 12...18 أمبير</option>
+<option value="LRD22">LRD22—أوفرلود حرارى: 16...24 أمبير</option>
+<option value="LRD32">LRD32—أوفرلود حرارى: 23...32 أمبير</option>
+<option value="LRD35">LRD35—أوفرلود حرارى: 30...38 أمبير</option>
+<option value="LRD325L">LRD325L—أوفرلود حرارى: 17...25 أمبير</option>
+<option value="LRD325">LRD325—أوفرلود حرارى: 17...25 أمبير</option>
+<option value="LRD332">LRD332—أوفرلود حرارى: 23...32 أمبير</option>
+<option value="LRD340">LRD340—أوفرلود حرارى: 30...40 أمبير</option>
+<option value="LRD350">LRD350—أوفرلود حرارى: 37...50 أمبير</option>
+<option value="LRD365">LRD365—أوفرلود حرارى: 48...65 أمبير</option>
+<option value="LRD3361">LRD3361—أوفرلود حرارى: 55...70 أمبير</option>
+<option value="LRD380">LRD380—أوفرلود حرارى: 62...80 أمبير</option>
+<option value="LRD3363">LRD3363—أوفرلود حرارى: 63...80 أمبير</option>
+<option value="LRD3365">LRD3365—أوفرلود حرارى: 80...104 أمبير</option>
+<option value="LRD4365">LRD4365—أوفرلود حرارى: 80...104 أمبير</option>
+<option value="LRD4367">LRD4367—أوفرلود حرارى: 95...120 أمبير</option>
+<option value="LRD4369">LRD4369—أوفرلود حرارى: 110...140 أمبير</option>
+<option value="GV2ME02">GV2ME02—قاطع حرارى: 0.16...0.25 أمبير</option>
+<option value="GV2ME03">GV2ME03—قاطع حرارى: 0.25...0.4 أمبير</option>
+<option value="GV2ME04">GV2ME04—قاطع حرارى: 0.4...0.63 أمبير</option>
+<option value="GV2ME05">GV2ME05—قاطع حرارى: 0.6...1 أمبير</option>
+<option value="GV2ME06">GV2ME06—قاطع حرارى: 1...1.6 أمبير</option>
+<option value="GV2ME07">GV2ME07—قاطع حرارى: 1.6...2.5 أمبير</option>
+<option value="GV2ME08">GV2ME08—قاطع حرارى: 2.5...4 أمبير</option>
+<option value="GV2ME10">GV2ME10—قاطع حرارى: 4...6 أمبير</option>
+<option value="GV2ME14">GV2ME14—قاطع حرارى: 6.3...10 أمبير</option>
+<option value="GV2ME16">GV2ME16—قاطع حرارى: 9…14 أمبير</option>
+<option value="GV2ME20">GV2ME20—قاطع حرارى: 13...18 أمبير</option>
+<option value="GV2ME21">GV2ME21—قاطع حرارى: 17...23 أمبير</option>
+<option value="GV2ME22">GV2ME22—قاطع حرارى: 20...25 أمبير</option>
+<option value="GV2ME32">GV2ME32—قاطع حرارى: 24...32 أمبير</option>
+<option value="GV3P40">GV3P40—قاطع حرارى: 30...40 أمبير</option>
+<option value="GV3P50">GV3P50—قاطع حرارى: 37...50 أمبير</option>
+<option value="GV3P65">GV3P65—قاطع حرارى: 48...65 أمبير</option>
+<option value="GV3P73">GV3P73—قاطع حرارى: 65...73 أمبير</option>
+<option value="GV3P80">GV3P80—قاطع حرارى: 70...80 أمبير</option>
+<option value="XB4BA21">XB4BA21—‫بوش بوتن, معدن, اسود‬‏ (1NO)</option>
+<option value="XB4BA31">XB4BA31—‫بوش بوتن, معدن, أخضر (1NO)</option>
+<option value="XB4BA42">XB4BA42—‫بوش بوتن, معدن, أحمر (1NC)</option>
+<option value="XB4BW33B5">XB4BW33B5—‫بوش بوتن مضئ, معدن, أخضر ليد 24 فولت متردد و مستمر (1NO + 1NC)</option>
+<option value="XB4BW35B5">XB4BW35B5—‫بوش بوتن مضئ, معدن, برتقالى ليد 24 فولت متردد و مستمر (1NO + 1NC)</option>
+<option value="XB4BW33M5">XB4BW33M5—‫بوش بوتن مضئ, معدن, أخضر ليد 240 فولت متردد (1NO + 1NC)</option>
+<option value="XB4BW34M5">XB4BW34M5—‫بوش بوتن مضئ, معدن, أحمر ليد 240 فولت متردد (1NO + 1NC)</option>
+<option value="XB4BW3365">XB4BW3365—‫بوش بوتن مضئ, معدن, أخضر بدون ليد (1NO + 1NC)</option>
+<option value="XB4BK123M5">XB4BK123M5—‫سليكتور 2 وضع مضئ, معدن, أخضر ليد 240 فولت متردد (1NO + 1NC)</option>
+<option value="XB4BK124M5">XB4BK124M5—‫سليكتور 2 وضع مضئ, معدن, أحمر ليد 240 فولت متردد (1NO + 1NC)</option>
+<option value="XB4BL73415">XB4BL73415—‫بوش بوتن ثنائى, معدن, أخضر - أحمر (1NO + 1NC)</option>
+<option value="XB4BD21">XB4BD21—‫سليكتور 2 وضع, معدن, اسود‬‏ (1NO)</option>
+<option value="XB4BD25">XB4BD25—‫سليكتور 2 وضع, معدن, اسود‬‏ (1NO + 1NC)</option>
+<option value="XB4BD33">XB4BD33—‫سليكتور 3 وضع (قلاب), معدن, اسود‬‏ (2NO)</option>
+<option value="XB4BD41">XB4BD41—‫سليكتور 2 وضع مارش, معدن, اسود‬‏ (1NO)</option>
+<option value="XB4BD53">XB4BD53—‫سليكتور 3 وضع مارش (قلاب), معدن, اسود‬‏ (2NO)</option>
+<option value="XB4BK124B5">XB4BK124B5—‫سليكتور 2 وضع مضئ, معدن, أحمر ليد 24 فولت متردد و مستمر (1NO + 1NC)</option>
+<option value="XB4BG21">XB4BG21—‫سليكتور بمفتاح 2 وضع, معدن, اسود‬‏ (1NO)</option>
+<option value="XB4BG33">XB4BG33—‫سليكتور بمفتاح 3 وضع (قلاب), معدن, اسود‬‏ (2NO)</option>
+<option value="XB4BS8442">XB4BS8442—‫بوش بوتن طوارئ‬, معدن, احمر (1NC)</option>
+<option value="XB4BS9442">XB4BS9442—‫بوش بوتن طوارئ‬‏ بمفتاح, معدن, احمر (1NC)</option>
+<option value="XB4BVM3">XB4BVM3—‫لمبة اشارة, معدن, أخضر ليد 240 فولت متردد‬‏</option>
+<option value="XB4BVM4">XB4BVM4—‫لمبة اشارة, معدن, أحمر ليد 240 فولت متردد‬‏</option>
+<option value="XB4BVM5">XB4BVM5—‫لمبة اشارة, معدن, برتقالى ليد 240 فولت متردد‬‏</option>
+<option value="XB4BVB3">XB4BVB3—‫لمبة اشارة, معدن, أخضر ليد 24 فولت متردد و مستمر‬‏</option>
+<option value="XB4BVB4">XB4BVB4—‫لمبة اشارة, معدن, أحمر ليد 24 فولت متردد و مستمر</option>
+<option value="XB4BVB5">XB4BVB5—‫لمبة اشارة, معدن, برتقالى ليد 24 فولت متردد و مستمر</option>
+<option value="XA2EA21">XA2EA21—‫بوش بوتن, بلاستيك, اسود‬‏ (1NO)</option>
+<option value="XA2EA31">XA2EA31—‫بوش بوتن, بلاستيك, أخضر (1NO)</option>
+<option value="XA2EA42">XA2EA42—‫بوش بوتن, بلاسنتيك, أحمر (1NC)</option>
+<option value="XA2EVB1LC">XA2EVB1LC—‫لمبة اشارة, بلاستيك, أبيض ليد  24 فولت متردد و مستمر </option>
+<option value="XA2EVB3LC">XA2EVB3LC—‫لمبة اشارة, بلاستيك, أخضر ليد  24 فولت متردد و مستمر </option>
+<option value="XA2EVB4LC">XA2EVB4LC—‫لمبة اشارة, بلاستيك, أحمر ليد  24 فولت متردد و مستمر </option>
+<option value="XA2EVB5LC">XA2EVB5LC—‫لمبة اشارة, بلاستيك, برتقالى ليد  24 فولت متردد و مستمر </option>
+<option value="XA2EVB6LC">XA2EVB6LC—‫لمبة اشارة, بلاستيك, أزرق ليد  24 فولت متردد و مستمر </option>
+<option value="XA2EVM1LC">XA2EVM1LC—‫لمبة اشارة, بلاستيك, أبيض ليد 240 فولت متردد‬‏</option>
+<option value="XA2EVM3LC">XA2EVM3LC—‫لمبة اشارة, بلاستيك, أخضر ليد 240 فولت متردد‬‏</option>
+<option value="XA2EVM4LC">XA2EVM4LC—‫لمبة اشارة, بلاستيك, أحمر ليد 240 فولت متردد‬‏</option>
+<option value="XA2EVM5LC">XA2EVM5LC—‫لمبة اشارة, بلاستيك, برتقالى ليد 240 فولت متردد‬‏</option>
+<option value="XA2EVM6LC">XA2EVM6LC—‫لمبة اشارة, بلاستيك, أزرق ليد 240 فولت متردد‬‏</option>
+<option value="XA2EW33B1">XA2EW33B1—‫بوش بوتن مضئ, بلاستيك, أخضر ليد 24 فولت متردد و مستمر (1NO)</option>
+<option value="XA2EW33M1">XA2EW33M1—‫بوش بوتن مضئ, بلاستيك, أخضر ليد 240 فولت متردد (1NO)</option>
+<option value="XA2ED21">XA2ED21—‫سليكتور 2 وضع, بلاستيك, اسود‬‏ (1NO)</option>
+<option value="XA2ED25">XA2ED25—‫سليكتور 2 وضع, بلاستيك, اسود‬‏ (1NO + 1NC)</option>
+<option value="XA2ED33">XA2ED33—‫سليكتور 3 وضع (قلاب), بلاستيك, اسود‬‏ (2NO)</option>
+<option value="XA2ED41">XA2ED41—‫سليكتور 2 وضع مارش, بلاستيك, اسود‬‏ (1NO)</option>
+<option value="XA2ED53">XA2ED53—‫سليكتور 3 وضع مارش (قلاب), بلاستيك, اسود‬‏ (2NO)</option>
+<option value="XA2EG21">XA2EG21—‫سليكتور بمفتاح 2 وضع, بلاستيك, اسود‬‏ (1NO)</option>
+<option value="XA2EG33">XA2EG33—‫سليكتور بمفتاح 3 وضع (قلاب), بلاستيك, اسود‬‏ (2NO)</option>
+  </select>
 
-<option value="LC1D12B7">LC1D12B7 — كونتاكتور: 12 أمبير, 5.5 ك وات , 24 فولت AC</option>
-<option value="LC1D12F7">LC1D12F7 — كونتاكتور: 12 أمبير, 5.5 ك وات , 110 فولت AC</option>
-<option value="LC1D12M7">LC1D12M7 — كونتاكتور: 12 أمبير, 5.5 ك وات , 220 فولت AC</option>
-<option value="LC1D12Q7">LC1D12Q7 — كونتاكتور: 12 أمبير, 5.5 ك وات , 380 فولت AC</option>
-
-<option value="LC1D18B7">LC1D18B7 — كونتاكتور: 18 أمبير, 7.5 ك وات , 24 فولت AC</option>
-<option value="LC1D18F7">LC1D18F7 — كونتاكتور: 18 أمبير, 7.5 ك وات , 110 فولت AC</option>
-<option value="LC1D18M7">LC1D18M7 — كونتاكتور: 18 أمبير, 7.5 ك وات , 220 فولت AC</option>
-<option value="LC1D18Q7">LC1D18Q7 — كونتاكتور: 18 أمبير, 7.5 ك وات , 380 فولت AC</option>
-
-<option value="LC1D25B7">LC1D25B7 — كونتاكتور: 25 أمبير, 11 ك وات , 24 فولت AC</option>
-<option value="LC1D25F7">LC1D25F7 — كونتاكتور: 25 أمبير, 11 ك وات , 110 فولت AC</option>
-<option value="LC1D25M7">LC1D25M7 — كونتاكتور: 25 أمبير, 11 ك وات , 220 فولت AC</option>
-<option value="LC1D25Q7">LC1D25Q7 — كونتاكتور: 25 أمبير, 11 ك وات , 380 فولت AC</option>
-</select>
-
-<button onclick="addProduct()">إضافة</button>
+  <button type="button" id="addBtn">إضافة</button>
 </div>
 
 <div class="box">
-<h2>قائمة الطلبات</h2>
-<table id="orderTable">
-<thead>
-<tr>
-<th>المنتج</th>
-<th>الكمية</th>
-<th>حذف</th>
-</tr>
-</thead>
-<tbody></tbody>
-</table>
+  <h3>قائمة الطلب</h3>
 
-<button id="sendBtn">طلب عرض سعر</button>
+  <table id="orderTable">
+    <thead>
+      <tr>
+        <th>المنتج</th>
+        <th>الكمية</th>
+        <th>حذف</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <button type="button" id="sendBtn">طلب عرض سعر</button>
 </div>
 
 <script>
-const productList = document.getElementById("productList");
-const productSearch = document.getElementById("productSearch");
+// البحث السريع
+productSearch.addEventListener("input", function () {
+  let val = this.value.toLowerCase().trim();
+  if (!val) return;
 
-// البحث عن المنتج عند الكتابة أو اللصق
-productSearch.addEventListener("input", function() {
-    const searchValue = this.value.trim().toLowerCase();
-    if(!searchValue) return;
-
-    let found = false;
-    for(let i=0; i<productList.options.length; i++){
-        const option = productList.options[i];
-        if(option.value.toLowerCase() === searchValue || option.text.toLowerCase().includes(searchValue)){
-            productList.selectedIndex = i;
-            found = true;
-            break;
-        }
+  for (let i = 0; i < productList.options.length; i++) {
+    let opt = productList.options[i];
+    if (
+      opt.value.toLowerCase() === val ||
+      opt.text.toLowerCase().includes(val)
+    ) {
+      productList.selectedIndex = i;
+      break;
     }
-    if(!found) productList.selectedIndex = 0;
+  }
 });
 
-// إضافة المنتج للجدول بالكود + الوصف
+// إضافة المنتج (كود + وصف في الجدول)
 function addProduct() {
-  let select = productList;
-  if(select.value === "") {
-    alert("يرجى اختيار منتج قبل الإضافة!");
+  let select = document.getElementById("productList");
+  if (!select.value) {
+    alert("اختر منتج");
     return;
   }
 
-  let productText = select.options[select.selectedIndex].text; // الكود + الوصف
-  let table = document.getElementById("orderTable").querySelector("tbody");
+  let code = select.value;
+  let fullText = select.options[select.selectedIndex].text; // كود + وصف
+  let tbody = document.querySelector("#orderTable tbody");
+
   let row = document.createElement("tr");
-
   row.innerHTML = `
-    <td>${productText}</td>
+    <td>${fullText}</td>
     <td><input type="number" value="1" min="1"></td>
-    <td><button onclick="this.parentElement.parentElement.remove();">✖</button></td>
+    <td><button type="button" onclick="this.closest('tr').remove()">✖</button></td>
   `;
+  tbody.appendChild(row);
 
-  table.appendChild(row);
   select.selectedIndex = 0;
   productSearch.value = "";
 }
 
-// إرسال الطلب للواتساب (الكود فقط)
-document.getElementById("sendBtn").addEventListener("click", function() {
-  let client = document.getElementById("clientName").value.trim();
-  let company = document.getElementById("companyName").value.trim();
+document.getElementById("addBtn").addEventListener("click", addProduct);
+
+// إرسال رسالة واتساب (كود فقط)
+document.getElementById("sendBtn").addEventListener("click", function () {
+  let client = clientName.value.trim();
+  let company = companyName.value.trim();
   let rows = document.querySelectorAll("#orderTable tbody tr");
 
-  if(client === "" || company === "") {
-    alert("يرجى كتابة اسم العميل واسم الشركة قبل الإرسال!");
+  if (!client || !company) {
+    alert("أدخل اسم العميل واسم الشركة");
     return;
   }
-  if(rows.length === 0) {
-    alert("لم يتم إضافة أي منتجات للطلب!");
+  if (rows.length === 0) {
+    alert("لا يوجد منتجات");
     return;
   }
 
-  let tableText = "┌───────────────────────────────┐\n";
-  tableText += "│          طلب عرض سعر           │\n";
-  tableText += "└───────────────────────────────┘\n\n";
-  tableText += `العميل: ${client}\n`;
-  tableText += `الشركة: ${company}\n\n`;
-  tableText += "┌───────────────────────────────┬────────┐\n";
-  tableText += "│ المنتج                        │ الكمية │\n";
-  tableText += "├───────────────────────────────┼────────┤\n";
+  let msg = "طلب عرض سعر\n";
+  msg += `الشركة : ${company}\n`;
+  msg += `العميل : ${client}\n`;
+  msg += "────────────────────\n";
+  msg += "CODE        | QTY\n";
+  msg += "────────────────────\n";
 
   rows.forEach(row => {
-    // الكود فقط قبل أي مسافة أو "—"
     let fullText = row.children[0].innerText;
-    let code = fullText.split(' ')[0].trim(); // يأخذ الكود قبل أول فراغ
+    let code = fullText.split(/[—\s]/)[0]; // استخراج الكود فقط
     let qty = row.children[1].querySelector("input").value;
-    let codeCol = code.padEnd(30,' ').slice(0,30);
-    let qtyCol = qty.toString().padStart(6,' ');
-    tableText += `│ ${codeCol} │ ${qtyCol} │\n`;
+    msg += `${code.padEnd(12, ' ')} | ${qty}\n`;
   });
 
-  tableText += "└───────────────────────────────┴────────┘\n";
-
-  const phone = "966564884782";
-  let msg = encodeURIComponent(tableText);
-  window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
+  window.open(
+    `https://wa.me/966564884782?text=${encodeURIComponent(msg)}`,
+    "_blank"
+  );
 });
 </script>
 
